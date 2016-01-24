@@ -1,0 +1,2 @@
+include 'boot2react-spring-boot-starter'
+include 'samples/boot2react-sample-app'

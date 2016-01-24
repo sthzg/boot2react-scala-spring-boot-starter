@@ -1,0 +1,23 @@
+apply plugin: "maven"
+
+jar {
+    baseName = 'boot2react-spring-boot-starter'
+    version = '0.0.1-SNAPSHOT'
+}
+
+description = "A starter to provide some utils for server side rendering on a NodeJS instance"
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.7'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.scalatest:scalatest_2.11:2.2.4'
+    compile 'com.fasterxml.jackson.module:jackson-module-scala_2.11:2.6.3'
+    compile 'org.apache.httpcomponents:httpcore:4.4.4'
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+    compile 'org.apache.httpcomponents:fluent-hc:4.5.1'
+    optional 'org.springframework.boot:spring-boot-configuration-processor'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+compileJava.dependsOn(processResources)
+compileScala.dependsOn(processResources)

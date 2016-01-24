@@ -1,0 +1,12 @@
+jar {
+    baseName = 'boot2react-sample-app'
+    version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.7'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.scalatest:scalatest_2.11:2.2.4'
+    compile project(":boot2react-spring-boot-starter")
+}
