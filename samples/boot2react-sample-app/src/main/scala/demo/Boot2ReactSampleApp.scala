@@ -22,7 +22,7 @@ object Boot2ReactSampleApp {
 
 @Controller
 class MvcControllers @Autowired()(val initialData: InitialData,
-                                  val react: NodeJsRenderService){
+                                  val react: NodeJsRenderService) {
 
   @RequestMapping(Array("/"))
   def welcome(request: HttpServletRequest , response: HttpServletResponse, locale: Locale) = {
