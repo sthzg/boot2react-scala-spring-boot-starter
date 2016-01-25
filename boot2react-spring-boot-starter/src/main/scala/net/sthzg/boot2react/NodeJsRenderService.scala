@@ -4,6 +4,7 @@ import java.net.URI
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import net.sthzg.boot2react.configprops.Boot2ReactProperties
 import org.apache.http.client.fluent.{Request, Content}
 import org.apache.http.entity.ContentType
 import org.slf4j.{LoggerFactory, Logger}

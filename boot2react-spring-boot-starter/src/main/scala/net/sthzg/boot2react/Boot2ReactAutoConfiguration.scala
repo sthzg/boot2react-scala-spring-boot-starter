@@ -1,5 +1,6 @@
 package net.sthzg.boot2react
 
+import net.sthzg.boot2react.configprops.Boot2ReactProperties
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.{ScopedProxyMode, Scope, Bean, Configuration}
