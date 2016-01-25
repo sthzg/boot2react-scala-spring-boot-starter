@@ -11,13 +11,25 @@ public class Boot2ReactProperties {
     private String buildDir;
 
     /** Protocol for the node render server (defaults to http) */
-    private String nodeRenderServerProtocol = "http";
+    private String protocol = "http";
 
     /** Host for the node render server (defaults to 127.0.0.1) */
-    private String getNodeRenderServerHost = "127.0.0.1";
+    private String host = "127.0.0.1";
 
     /** Port for the node render server. */
-    private Short nodeRenderServerPort = 9999;
+    private Short port = 9999;
+
+    /** The endpoint on the NodeJS render server that accepts POST requests for SSR */
+    private String renderEndpoint = "api/render";
+
+
+    //
+    // Helpers, Computed Fields
+    // –––
+
+    public String getRenderEndpointURI() {
+        return protocol + "://" + host + ":" + port + "/" + renderEndpoint;
+    }
 
 
     //
@@ -32,27 +44,35 @@ public class Boot2ReactProperties {
         this.buildDir = buildDir;
     }
 
-    public String getNodeRenderServerProtocol() {
-        return nodeRenderServerProtocol;
+    public String getProtocol() {
+        return protocol;
     }
 
-    public void setNodeRenderServerProtocol(String nodeRenderServerProtocol) {
-        this.nodeRenderServerProtocol = nodeRenderServerProtocol;
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 
-    public String getGetNodeRenderServerHost() {
-        return getNodeRenderServerHost;
+    public String getHost() {
+        return host;
     }
 
-    public void setGetNodeRenderServerHost(String getNodeRenderServerHost) {
-        this.getNodeRenderServerHost = getNodeRenderServerHost;
+    public void setHost(String host) {
+        this.host = host;
     }
 
-    public Short getNodeRenderServerPort() {
-        return nodeRenderServerPort;
+    public Short getPort() {
+        return port;
     }
 
-    public void setNodeRenderServerPort(Short nodeRenderServerPort) {
-        this.nodeRenderServerPort = nodeRenderServerPort;
+    public void setPort(Short port) {
+        this.port = port;
+    }
+
+    public String getRenderEndpoint() {
+        return renderEndpoint;
+    }
+
+    public void setRenderEndpoint(String renderEndpoint) {
+        this.renderEndpoint = renderEndpoint;
     }
 }

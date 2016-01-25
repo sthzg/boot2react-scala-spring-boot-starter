@@ -29,7 +29,7 @@ class NodeJsRenderService(val properties: Boot2ReactProperties) {
     var results: RouterResults = new RouterResults
     try {
       content = Request
-        .Post("http://127.0.0.1:" + properties.getNodeRenderServerPort + "/render")
+        .Post(properties.getRenderEndpointURI)
         .addHeader("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE)
         .bodyString("{\"reqURI\": \"" + reqURI + "\", \"initialData\": " + initialData + "}", ContentType.APPLICATION_JSON)
         .execute
