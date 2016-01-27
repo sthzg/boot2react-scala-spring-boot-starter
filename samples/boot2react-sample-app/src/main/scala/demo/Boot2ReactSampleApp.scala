@@ -25,20 +25,9 @@ class MvcControllers @Autowired()(val initialData: InitialData,
                                   val react: NodeJsRenderService) {
 
   @RequestMapping(Array("/"))
-  def welcome(request: HttpServletRequest , response: HttpServletResponse, locale: Locale) = {
-    var resp: ResponseEntity[String] = null
-    var results: RouterResults = new RouterResults()
-
+  def welcome(req: HttpServletRequest , locale: Locale) = {
     initialData.data.put("locale", locale.getLanguage)
-//    additionalData match {
-//      case Some(data) => initialData.data ++=  data
-//      case None => // ignored
-//    }
-    val initialJson: String = initialData.toJson("boot2react")
-    results = react.resolveRequestThroughNodeJS(request.getRequestURI, initialJson)
-
-    resp = react.createResponseEntity(results)
-    resp
+    react.createResponseEntity(react.resolveRequestThroughNodeJS(req.getRequestURI, initialData))
   }
 
 }
