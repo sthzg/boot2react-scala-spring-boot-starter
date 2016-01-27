@@ -22,16 +22,20 @@ class NodeJsRenderService(val properties: Boot2ReactProperties) {
     * @param reqURI requested uri
     * @return RouterResults populated results object for the current request
     */
-  def resolveRequestThroughNodeJS(reqURI: String, initialData: String): RouterResults = {
-    logger.info(s"Request rendering $reqURI through NodeJS render engine")
+  def resolveRequestThroughNodeJS(reqURI: String, initialData: InitialData): RouterResults = {
+    logger.info(s"Request rendering $reqURI through NodeJS render engine on ${properties.getRenderEndpointURI}")
+
+    val initialJson = initialData.toJson("boot2react")
+    val reqBody = s"""{"reqURI": "$reqURI", "initialData": $initialJson}"""
 
     var content: Content = null
     var results: RouterResults = new RouterResults
+
     try {
       content = Request
         .Post(properties.getRenderEndpointURI)
         .addHeader("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE)
-        .bodyString("{\"reqURI\": \"" + reqURI + "\", \"initialData\": " + initialData + "}", ContentType.APPLICATION_JSON)
+        .bodyString(reqBody, ContentType.APPLICATION_JSON)
         .execute
         .returnContent
     }
